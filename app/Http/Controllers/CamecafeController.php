@@ -39,6 +39,7 @@ class CamecafeController extends Controller
     public function postContact(Request $request)
     {
         //
+        return 'hello !!!';
     }
 
     /**
