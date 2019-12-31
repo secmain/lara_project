@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\ContactFormRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Mail\Message;
 
 class CamecafeController extends Controller
 {
@@ -36,10 +38,16 @@ class CamecafeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function postContact(Request $request)
+    public function postContact(ContactFormRequest $request)
     {
+        /*
         //
-        return 'hello !!!';
+        \Mail::send('emails.hello', ['name' => 'tanaka'], function (Message $message) {
+            $message->to('circlecle4586@gmail.com', '太郎')
+                    ->subject('お知らせ');
+        });
+        */
+        return view('camecafe.contact_end');
     }
 
     /**
