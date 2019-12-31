@@ -6,7 +6,7 @@ Contact
 
 @section('content')
 <h1>contact</h1>
-<form class="contact-form" method="post">
+<form class="contact-form" method="post" action="">
 	<!--
 	@i
 	@omponent('components.text_input')
@@ -41,6 +41,18 @@ Contact
     'name' => 'camera',
     'id' => 'camera',
     'label' => 'カメラ'
+	])
+
+	@include('camecafe.components.textarea_input', [
+    'name' => 'text',
+    'id' => 'text',
+    'label' => '内容'
+	])
+
+	@include('camecafe.components.btn_submit', [
+    'name' => 'submit',
+    'id' => 'submit',
+    'value' => '送信'
 	])
 
 </form>
