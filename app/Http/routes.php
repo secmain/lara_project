@@ -56,10 +56,6 @@ Route::get('/', 'HomeController@index');
 // 下と同じ定義：Route::get('home', 'HomeController@home')->middleware(['auth']);
 Route::get('home', ['middleware' => 'auth', 'uses' => 'HomeController@home']);
 
-Route::get('aaa', function() {
-	return Response::view('douga');
-});
-
 Route::get('blog', function() {
 	return Response::view('blog');
 });
@@ -77,6 +73,16 @@ Route::get('contact', function() {
 	return Response::view('contact');
 });
 */
+
+Route::group(['middleware' => 'auth'], function () {
+	Route::resource(
+		'admin/entry',
+		'Admin\EntryController',
+		['except' => ['destroy', 'show']]
+	);
+});
+
+// 以下5.2より非推奨、Route::を使用し、個別に定義する必要がある。
 
 Route::controller('camecafe', 'CamecafeController');
 //

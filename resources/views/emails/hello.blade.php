@@ -1,0 +1,1 @@
+hello! taro and {{ $name }} さん

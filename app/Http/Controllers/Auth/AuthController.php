@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use Validator;
+use App\Services\UserService;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\UserRegisterRequest;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
@@ -22,30 +25,55 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers;
 
+    /** @var Guard */
+    protected $auth;
+
     /**
      * Create a new authentication controller instance.
      *
-     * @return void
+     * @param Guard $auth
      */
-    public function __construct()
+    public function __construct(Guard $auth)
     {
         $this->middleware('guest', ['except' => 'getLogout']);
+        $this->auth = $auth;
+        $this->redirectPath = '/blog';
     }
 
     /**
-     * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @param  UserRegisterRequest $request
+     * @param  UserService $user
+     * @return \Illuminate\Http\RedirectResponse
      */
-    protected function validator(array $data)
+    public function postRegister(UserRegisterRequest $request, UserService $user)
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
+        $input = $request->only(['name', 'email', 'password']);
+        $result = $user->registerUser($input);
+        $this->auth->login($result);
+        // return redirect()->route('admin.entry.index');
+        return redirect()->route('blog');
     }
+
+    /**
+     * @param LoginRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postLogin(LoginRequest $request)
+    {
+        $result = $this->auth->attempt(
+            $request->only(['email', 'password']),
+            $request->get('remember', false)
+        );
+
+        if (!$result) {
+            return redirect()->route('get.login')
+                    ->with('message', 'failed user auth!!!');
+        }
+
+        return redirect()->route('admin.entry.index');
+    }
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -54,11 +82,16 @@ class AuthController extends Controller
      * @return User
      */
     protected function create(array $data)
-    {
+    {   
+        /*
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+        */
+
+
+
     }
 }

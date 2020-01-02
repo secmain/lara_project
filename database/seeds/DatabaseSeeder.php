@@ -16,6 +16,14 @@ class DatabaseSeeder extends Seeder
 
         $this->call(MemberTableSeeder::class);
 
+        Schema::table('comments', function ($table) {
+            $table->foreign('entry_id')->references('id')->on('entries')->onDelete('cascade')->onUpdate('cascade');
+        });
+
+        Schema::table('entries', function ($table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+        });
+
         // $this->call('UserTableSeeder');
 
         Model::reguard();
