@@ -25,11 +25,11 @@ class ContactFormRequest extends Request
     {
         return [
             //
-            'name' => ['required', 'max:50'],
-            'email' => ['required', 'email'],
-            'camera' => ['max:200'],
-            'camera_reki' => ['digits:3'],
-            'text' => ['required', 'max:1000']
+            'request_user' => ['required', 'max:50'],
+            'mail' => ['required', 'email'],
+            'use_camera' => ['max:200'],
+            'camera_year' => ['max:5'],
+            'content' => ['required', 'max:1000']
         ];
     }
 }

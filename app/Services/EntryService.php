@@ -18,6 +18,21 @@ class EntryService
 		$this->entry = $entry;
 	}
 
+  /**
+   * @param int $page
+   * @param int $limit
+   *
+   * @return LengthAwarePaginator
+   */
+  public function getPage($page = 1, $limit = 20)
+  {
+  	$result = $this->entry->byPage($page, $limit);
+  	return new LenghtAwarePaginator(
+  		$result->items, $result->total, $result->perPage, $result->currentPage
+  	);
+  }
+
+
 	/**
 	 * @param array $attributes
 	 * @return mixed
@@ -35,8 +50,5 @@ class EntryService
 	{
 		return $this->entry->find($id);
 	}
-
-
-
 
 }

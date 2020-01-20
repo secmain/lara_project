@@ -49,8 +49,9 @@ class AuthController extends Controller
     public function postRegister(UserRegisterRequest $request, UserService $user)
     {
         $input = $request->only(['name', 'email', 'password']);
-        $result = $user->registerUser($input);
-        $this->auth->login($result);
+        var_dump($user);
+        // $result = $user->registerUser($input);
+        // 	$this->auth->login($result);
         // return redirect()->route('admin.entry.index');
         return redirect()->route('blog');
     }

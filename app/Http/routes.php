@@ -56,24 +56,6 @@ Route::get('/', 'HomeController@index');
 // 下と同じ定義：Route::get('home', 'HomeController@home')->middleware(['auth']);
 Route::get('home', ['middleware' => 'auth', 'uses' => 'HomeController@home']);
 
-Route::get('blog', function() {
-	return Response::view('blog');
-});
-
-Route::get('photo', function() {
-	return Response::view('blog');
-});
-
-Route::get('event', function() {
-	return Response::view('blog');
-});
-
-/*
-Route::get('contact', function() {
-	return Response::view('contact');
-});
-*/
-
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource(
 		'admin/entry',
@@ -82,8 +64,15 @@ Route::group(['middleware' => 'auth'], function () {
 	);
 });
 
+Route::resource('entry', 'EntryController', ['only' => ['index', 'show']]);
+
 // 以下5.2より非推奨、Route::を使用し、個別に定義する必要がある。
 
+Route::get('camecafe/photos', 'CamecafeController@getPhotos');
+Route::get('camecafe/events', 'CamecafeController@getEvents');
+Route::get('camecafe/event/{$id}', 'CamecafeController@getEvent');
+Route::get('camecafe/blogs', 'CamecafeController@getBlogs');
+Route::get('camecafe/blog/{$id}', 'CamecafeController@getBlog');
 Route::controller('camecafe', 'CamecafeController');
 //
 // 以下のURIを定義

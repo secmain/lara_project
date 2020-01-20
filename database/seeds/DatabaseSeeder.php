@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,20 +12,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //
         Model::unguard();
 
+        $this->call(ContactTableSeeder::class);
         $this->call(MemberTableSeeder::class);
+        $this->call(EventTableSeeder::class);
+        $this->call(PhotoTableSeeder::class);
+        $this->call(BlogTableSeeder::class);
+        $this->call(FaqTableSeeder::class);
+        $this->call(BlogMastaTableSeeder::class);
 
-        Schema::table('comments', function ($table) {
-            $table->foreign('entry_id')->references('id')->on('entries')->onDelete('cascade')->onUpdate('cascade');
+
+        Schema::table('photos', function ($table) {
+            $table->foreign('event_id')->references('id')->on('events');
         });
 
-        Schema::table('entries', function ($table) {
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+        Schema::table('blog_mastas', function ($table) {
+            $table->unique('blog_type');
         });
-
-        // $this->call('UserTableSeeder');
-
-        Model::reguard();
     }
 }

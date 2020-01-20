@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\DataAccess\Eloquent\User;
 
-class UserRepository implememnts UserRepositoryInterface
+class UserRepository implements UserRepositoryInterface
 {
 
 	/** @var User */
