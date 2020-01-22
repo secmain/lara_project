@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title> @yield('title') </title>
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/came_layout.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/bootstrap-4.3.1-dist/css/bootstrap.min.css') }}">
 	@yield('css_link')
 </head>
 
@@ -46,6 +47,8 @@
 			<p class="footer-word">footer</p>
 		</div>
 	</div>
+
+	<script src="{{ asset('assets/bootstrap-4.3.1-dist/js/bootstrap.min.js') }}"></script>
 </body>
 
 </html>
