@@ -14,7 +14,6 @@ use App\Http\Requests;
 use App\Http\Requests\ContactFormRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Mail\Message;
-use Carbon\Carbon;
 
 
 class CamecafeController extends Controller
@@ -62,6 +61,7 @@ class CamecafeController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function getContact()
@@ -73,31 +73,11 @@ class CamecafeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function getAbout()
-    {
-        //
-        return view('camecafe.about.aboutme');
-    }
-
-    /**
-     * Display the specified resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function getTop()
     {
-        $blog_count = 3;
-        $col = 12 / $blog_count;
-        $current_event = Event::where('event_date', '>', Carbon::now())->orderBy('event_date')->first();
-        $new_blogs = Blog::orderBy('created_at', 'desc')->take($blog_count)->get();
-        return view('camecafe.toppage.toppage')->with([
-            'current_event' => $current_event,
-            'new_blogs' => $new_blogs,
-            'col_count' => $col
-        ]);
+        return view('camecafe.toppage.top');
     }
 
     /**
