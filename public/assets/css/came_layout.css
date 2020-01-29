@@ -17,12 +17,12 @@
 }
 
 .hero {
-	min-height: 300px;
+	/*min-height: 300px;
 	background: url("../image/コスモス.jpg") no-repeat;
 	background-size: cover;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: center;*/
 }
 
 .read {
@@ -113,12 +113,9 @@
 }
 
 .footer {
-	min-height: 50px;
-	background-color: #666;
-	color: white;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	background-color: #343a40;
+	color: #fff;
+	text-align: center;
 }
 
 @media(max-width: 768px) {

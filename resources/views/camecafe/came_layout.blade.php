@@ -54,10 +54,30 @@
 	</header>
 
 	<div class="container-fluid img-hidden">
-		<div class="read">
-			<div class="hero">
-			<h1 class="main-title">camera and cafe</h1><br>
-			<div class="main-sub-title">東京初心者向けカメラサークル</div>
+
+		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<div class="carousel-caption">
+						<h5>camera and cafe</h5>
+						<p>東京初心者向けカメラサークル</p>
+					</div>
+					<img src="{{ asset('assets/image/コスモス.jpg') }}" alt="first_slide" class="d-block">
+				</div>
+			</div>
+		</div>
+
+		<div class="carousel-item">
+			<div class="carousel-caption d-none d-md-block">
+				<img class="img-fluid" src="{{ asset('assets/image/コスモス.jpg') }}">
+				<h5>camera and cafe</h5>
+				<p>東京初心者向けカメラサークル</p>
+			</div>
 		</div>
 	</div>
 
