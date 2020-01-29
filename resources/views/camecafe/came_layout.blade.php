@@ -54,49 +54,36 @@
 	</header>
 
 	<div class="container-fluid img-hidden">
-
-		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-			<ol class="carousel-indicators">
-				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-			</ol>
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<div class="carousel-caption">
-						<h5>camera and cafe</h5>
-						<p>東京初心者向けカメラサークル</p>
-					</div>
-					<img src="{{ asset('assets/image/コスモス.jpg') }}" alt="first_slide" class="d-block">
-				</div>
-			</div>
-		</div>
-
-		<div class="carousel-item">
-			<div class="carousel-caption d-none d-md-block">
-				<img class="img-fluid" src="{{ asset('assets/image/コスモス.jpg') }}">
-				<h5>camera and cafe</h5>
-				<p>東京初心者向けカメラサークル</p>
-			</div>
+		<div class="jumbotron">
+	    <div class="container-fluid">
+	        <h1 class="hero-word">camera and cafe</h1>
+		      <p class="hero-btn"><a class="btn btn-primary btn-lg" href="#" role="button">CONTACT</a></p>
+	    </div>
 		</div>
 	</div>
 
 
-
-
-
-
-		<div class="content">
-			<div class="main">
+	<div class="container">
+		<div class="row content">
+			<div class="main col-md-10">
 				@yield('content_main')
 			</div>
-			<div class="sidebar">dd</div>
+			<div class="sidebar col-md-2"></div>
 		</div>
+	</div>
 
+	<footer class="footer">
+	  <div class="container">
+	    <p class="text-muted">Place sticky footer content here.</p>
+	  </div>
+	</footer>
+
+	<div class="container-fluid">
 		<div class="footer">
 			<p class="footer-word">footer</p>
 		</div>
 	</div>
+
 
 	<script src="{{ asset('assets/jquery/jquery-3.4.1.min.js') }}"></script>
 	<script src="{{ asset('assets/bootstrap-4.4.1-dist/js/bootstrap.min.js') }}"></script>
