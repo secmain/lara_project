@@ -76,7 +76,6 @@
 	    <p class="text-center">Place sticky footer content here.</p>
 	</footer>
 
->>>>>>> template_bootstrap
 
 	<script src="{{ asset('assets/jquery/jquery-3.4.1.min.js') }}"></script>
 	<script src="{{ asset('assets/bootstrap-4.4.1-dist/js/bootstrap.min.js') }}"></script>
