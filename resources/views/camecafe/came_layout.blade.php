@@ -72,18 +72,11 @@
 		</div>
 	</div>
 
-	<footer class="footer">
-	  <div class="container">
-	    <p class="text-muted">Place sticky footer content here.</p>
-	  </div>
+	<footer class="footer fixed-bottom">
+	    <p class="text-center">Place sticky footer content here.</p>
 	</footer>
 
-	<div class="container-fluid">
-		<div class="footer">
-			<p class="footer-word">footer</p>
-		</div>
-	</div>
-
+>>>>>>> template_bootstrap
 
 	<script src="{{ asset('assets/jquery/jquery-3.4.1.min.js') }}"></script>
 	<script src="{{ asset('assets/bootstrap-4.4.1-dist/js/bootstrap.min.js') }}"></script>
