@@ -1,9 +1,9 @@
-<div class="pure-control-group">
+<div class="form-group">
 	@if ($errors->has($name))
 	<div class="errors">
 		<p>{{ $errors->first($name) }}</p>
 	</div>
 	@endif
 	<label for="{{ $name }}">{{ $label }}</label>
-	<textarea name="{{ $name }}"></textarea>
+	<textarea class="form-controll" name="{{ $name }}"></textarea>
 </div>
